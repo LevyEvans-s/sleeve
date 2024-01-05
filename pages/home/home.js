@@ -1,4 +1,5 @@
 // pages/home.js
+import { Banner } from '../../model/banner'
 import {Theme} from '../../model/theme'
 
 Page({
@@ -7,20 +8,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    topTheme:null
+    themeA:null,
+    themeB:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-    Theme.getHomeLocationA(data=>{
-      this.setData({
-        topTheme:data[0]
-      })
-    })
+  onLoad: async function (options) {
+    this.initAllData()
   },
-
+  async initAllData(){
+    const themeA=await Theme.getHomeLocationA()
+    const bannerB=await Banner.getHomeLocationB()
+    this.setData({
+      themeA:themeA[0],
+      bannerB
+    }) 
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
