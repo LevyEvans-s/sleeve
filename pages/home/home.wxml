@@ -1,3 +1,16 @@
 <view>
   <image src="{{themeA.entrance_img}}" class="top-theme"/>
+  <swiper class="swiper"
+      indicator-dots
+      indicator-active-color="#157658"
+      autoplay
+      circular
+  >
+    <block wx:for="{{bannerB.items}}">
+      <swiper-item>
+        <image class="swiper" src="{{item.img}}"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <s-category-grid grid="{{grid}}"></s-category-grid>
 </view>
